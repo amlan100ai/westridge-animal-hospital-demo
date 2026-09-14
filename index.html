@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Westridge Animal Hospital | Fort Worth, TX</title>
+<meta name="description" content="Westridge Animal Hospital has cared for Fort Worth pets since 1984. Dr. Christopher Brooks and his team offer surgery, vaccinations, lab work, and more at 9911 Camp Bowie W. Call (817) 244-7742.">
+<link rel="icon" type="image/png" sizes="192x192" href="/public/images/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/public/images/icon-512.png">
+<link rel="apple-touch-icon" href="/public/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#0092b7;
+    --teal-mid:#04728f;
+    --teal-dark:#06414f;
+    --teal-darker:#042c36;
+    --maroon:#7d2e35;
+    --maroon-dark:#5e2126;
+    --gold:#e9c468;
+    --sage:#93b56c;
+    --cream:#fbf8f3;
+    --card:#ffffff;
+    --ink:#20282a;
+    --ink-soft:#55636a;
+    --line:#e6e1d6;
+    --shadow:0 20px 50px -20px rgba(4,44,54,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--teal-darker);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    margin:0 0 .5em 0;
+    line-height:1.15;
+  }
+  p{line-height:1.7;margin:0 0 1em 0;color:var(--ink-soft);}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;border-radius:100px;font-weight:700;
+    font-size:.95rem;letter-spacing:.2px;cursor:pointer;border:none;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    white-space:nowrap;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--maroon);color:#fff;box-shadow:0 12px 24px -8px rgba(125,46,53,.55);}
+  .btn-primary:hover{background:var(--maroon-dark);box-shadow:0 16px 30px -8px rgba(125,46,53,.6);}
+  .btn-outline{background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(255,255,255,.55);}
+  .btn-outline:hover{background:rgba(255,255,255,0.18);}
+  .btn-ghost{background:#eef6f8;color:var(--teal-dark);}
+  .btn-ghost:hover{background:#e0eef1;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:800;font-size:.78rem;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--teal-mid);
+  }
+  .eyebrow.on-dark{color:#8fd4e8;}
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky;top:0;z-index:1000;
+    background:rgba(4,32,39,0.94);
+    -webkit-backdrop-filter:blur(14px) saturate(105%);
+    backdrop-filter:blur(14px) saturate(105%);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 24px;max-width:1180px;margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand img{width:46px;height:46px;border-radius:18%;box-shadow:0 4px 14px rgba(0,0,0,.3);}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15;}
+  .brand-text strong{color:#fff;font-family:'Fraunces',serif;font-size:1.03rem;font-weight:700;}
+  .brand-text span{color:#8fd4e8;font-size:.68rem;letter-spacing:.6px;font-weight:600;}
+  .nav-links{display:flex;align-items:center;gap:26px;}
+  .nav-links a{color:#eaf6f8;font-weight:600;font-size:.9rem;opacity:.9;transition:opacity .15s, color .15s;}
+  .nav-links a:hover{opacity:1;color:#fff;}
+  .nav-cta{display:flex;align-items:center;gap:12px;}
+  .nav-call{color:#fff;font-weight:700;font-size:.86rem;display:flex;align-items:center;gap:6px;}
+  .burger{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .burger span{display:block;width:24px;height:2.5px;background:#fff;margin:5px 0;border-radius:2px;}
+  .mobile-menu{
+    display:none;flex-direction:column;gap:2px;
+    background:rgba(4,28,34,0.98);
+    padding:10px 24px 22px;
+    border-top:1px solid rgba(255,255,255,0.08);
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{color:#eaf6f8;font-weight:600;padding:12px 4px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .mobile-menu .btn{margin-top:14px;justify-content:center;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:linear-gradient(160deg, var(--teal-darker) 0%, var(--teal-dark) 45%, var(--teal-mid) 100%);
+    color:#fff;
+    padding:64px 0 96px;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-10%;bottom:-30%;width:560px;height:560px;
+    background:radial-gradient(circle, rgba(4,114,143,0.45) 0%, rgba(4,114,143,0) 70%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;
+    position:relative;z-index:2;
+  }
+  .hero h1{font-size:2.6rem;color:#fff;letter-spacing:-.5px;}
+  .hero h1 em{font-style:italic;color:#8fd4e8;}
+  .hero p.lead{color:#cfe9ef;font-size:1.05rem;max-width:520px;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin:26px 0 30px;}
+  .hero-trust{display:flex;flex-wrap:wrap;gap:22px;margin-top:8px;}
+  .hero-trust .item{display:flex;align-items:center;gap:10px;}
+  .hero-trust .num{font-weight:800;color:#fff;font-size:1rem;}
+  .hero-trust .lbl{color:#b7d9e1;font-size:.82rem;}
+  .hero-visual{position:relative;}
+  .hero-card{
+    border-radius:26px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,0.55);
+    border:6px solid rgba(255,255,255,0.08);
+  }
+  .hero-card img{width:100%;height:420px;object-fit:cover;object-position:50% 40%;}
+  .hero-badge{
+    position:absolute;left:-18px;bottom:-24px;background:#fff;color:var(--teal-dark);
+    padding:16px 20px;border-radius:18px;box-shadow:var(--shadow);
+    display:flex;align-items:center;gap:12px;max-width:250px;
+  }
+  .hero-badge .icon{
+    width:42px;height:42px;border-radius:50%;background:#eef6f8;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;
+  }
+  .hero-badge strong{display:block;font-size:.85rem;color:var(--teal-dark);}
+  .hero-badge span{display:block;font-size:.72rem;color:var(--ink-soft);}
+
+  /* ===== SECTION GENERAL ===== */
+  section{padding:88px 0;}
+  .section-head{max-width:640px;margin:0 auto 50px;text-align:center;}
+  .section-head h2{font-size:2rem;color:var(--teal-dark);}
+  .section-head p{font-size:1.02rem;}
+  .center{text-align:center;}
+
+  /* ===== TRUST STRIP ===== */
+  .trust-strip{background:#eef6f8;padding:24px 0;}
+  .trust-strip .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center;}
+  .trust-strip .t-item{display:flex;align-items:center;gap:10px;color:var(--teal-dark);font-weight:700;font-size:.88rem;}
+  .trust-strip .t-item .dot{color:var(--maroon);font-size:1.3rem;line-height:0;}
+
+  /* ===== PROOF / GAP BAND ===== */
+  .proof{
+    background:linear-gradient(135deg, var(--teal-dark) 0%, var(--teal-darker) 100%);
+    color:#fff;border-radius:32px;padding:60px;position:relative;overflow:hidden;
+  }
+  .proof::before{
+    content:"";position:absolute;left:-8%;top:-25%;width:420px;height:420px;
+    background:radial-gradient(circle, rgba(4,114,143,0.5) 0%, rgba(4,114,143,0) 70%);
+  }
+  .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;position:relative;z-index:1;}
+  .quote-mark{font-family:'Fraunces',serif;font-size:4rem;color:#8fd4e8;line-height:0;display:block;margin-bottom:10px;}
+  .proof h2{color:#fff;font-size:1.8rem;}
+  .proof p{color:#cfe9ef;}
+  .proof-side{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:30px;}
+  .proof-side .gap-line{display:flex;gap:12px;margin-bottom:16px;font-size:.92rem;color:#eaf6f8;align-items:flex-start;}
+  .proof-side .gap-line:last-child{margin-bottom:0;}
+  .proof-side .gap-ic{flex-shrink:0;}
+
+  /* ===== TEAM ===== */
+  .vet-grid{display:grid;grid-template-columns:.5fr 1fr;gap:48px;align-items:center;margin-bottom:64px;}
+  .vet-grid:last-child{margin-bottom:0;}
+  .vet-grid.reverse{grid-template-columns:1fr .5fr;}
+  .vet-grid.reverse .vet-photo{order:2;}
+  .vet-photo{display:flex;justify-content:center;}
+  .vet-photo img{width:210px;height:210px;border-radius:50%;object-fit:cover;border:6px solid #eef6f8;box-shadow:0 18px 40px -18px rgba(4,44,54,.4);}
+  .vet-copy h3{color:var(--teal-dark);font-size:1.4rem;margin-bottom:4px;}
+  .vet-role{color:#fff;background:var(--maroon);display:inline-block;font-weight:800;font-size:.74rem;letter-spacing:.6px;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:16px;}
+  .team-photo{border-radius:24px;overflow:hidden;box-shadow:0 20px 44px -22px rgba(4,44,54,.4);margin-top:20px;}
+  .team-photo img{width:100%;height:auto;display:block;}
+
+  /* ===== SERVICES ===== */
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .service-card{
+    background:#fff;border-radius:20px;padding:26px 22px;
+    border:1px solid var(--line);box-shadow:0 12px 30px -24px rgba(4,44,54,.3);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .service-card:hover{transform:translateY(-6px);box-shadow:0 20px 36px -20px rgba(4,44,54,.28);}
+  .service-card .ic{
+    width:46px;height:46px;border-radius:14px;background:#eef6f8;
+    display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px;
+  }
+  .service-card h4{color:var(--teal-dark);font-size:1rem;margin-bottom:8px;}
+  .service-card ul{margin:0;padding-left:18px;}
+  .service-card li{font-size:.84rem;color:var(--ink-soft);margin-bottom:4px;line-height:1.5;}
+
+  /* ===== GALLERY ===== */
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .gallery-grid figure{margin:0;border-radius:18px;overflow:hidden;box-shadow:0 14px 30px -20px rgba(4,44,54,.35);aspect-ratio:4/3;}
+  .gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease;}
+  .gallery-grid figure:hover img{transform:scale(1.06);}
+
+  /* ===== TESTIMONIALS ===== */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .testi-card{background:#fff;border-radius:20px;padding:28px 24px;border:1px solid var(--line);box-shadow:0 12px 30px -24px rgba(4,44,54,.3);}
+  .testi-card .stars{color:var(--gold);font-size:.95rem;letter-spacing:1px;margin-bottom:12px;}
+  .testi-card p{font-size:.92rem;color:var(--ink);font-style:italic;}
+  .testi-card .who{font-weight:800;color:var(--teal-dark);font-size:.88rem;margin-top:10px;}
+
+  /* ===== PROMO STRIP ===== */
+  .promo{
+    background:linear-gradient(120deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+    color:#fff;border-radius:24px;padding:36px 40px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  .promo h3{color:#fff;font-size:1.3rem;margin:0 0 6px;}
+  .promo p{color:#f2d9dc;margin:0;max-width:520px;}
+
+  /* ===== HOURS / LOCATION ===== */
+  .hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch;}
+  .info-card{background:#fff;border-radius:24px;padding:36px;border:1px solid var(--line);box-shadow:0 16px 40px -28px rgba(4,44,54,.3);}
+  .info-card h3{color:var(--teal-dark);font-size:1.25rem;margin-bottom:18px;}
+  .hours-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--line);font-size:.92rem;gap:12px;}
+  .hours-row:last-child{border-bottom:none;}
+  .hours-row span:first-child{font-weight:700;color:var(--teal-dark);white-space:nowrap;}
+  .hours-row span:last-child{color:var(--ink-soft);text-align:right;}
+  .contact-line{display:flex;align-items:center;gap:12px;margin-bottom:16px;font-size:.94rem;}
+  .contact-line .ic{width:38px;height:38px;border-radius:10px;background:#eef6f8;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .contact-line a{font-weight:800;color:var(--teal-dark);}
+  .contact-line a:hover{color:var(--teal-mid);}
+  .map-embed{border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:0 16px 40px -28px rgba(4,44,54,.3);min-height:260px;}
+  .map-embed iframe{width:100%;height:100%;min-height:260px;border:0;display:block;}
+  .emergency-note{
+    background:#eef6f8;border-radius:16px;padding:16px 18px;margin-top:20px;
+    font-size:.85rem;color:var(--teal-dark);display:flex;gap:12px;
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta{
+    background:linear-gradient(135deg, var(--teal-darker) 0%, var(--teal-dark) 55%, var(--teal-mid) 100%);
+    color:#fff;text-align:center;border-radius:32px;padding:70px 40px;
+  }
+  .final-cta h2{color:#fff;font-size:2rem;}
+  .final-cta p{color:#cfe9ef;max-width:560px;margin:0 auto 26px;}
+  .final-cta .hero-actions{justify-content:center;}
+  .final-cta .btn-outline{border-color:rgba(255,255,255,.7);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--teal-darker);color:#a9cdd6;padding:56px 0 26px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:36px;}
+  .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .footer-brand img{width:40px;height:40px;border-radius:18%;}
+  .footer-brand strong{color:#fff;font-family:'Fraunces',serif;font-size:1.1rem;}
+  footer h4{color:#fff;font-size:.82rem;letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px;}
+  footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;}
+  footer a{font-size:.9rem;color:#a9cdd6;}
+  footer a:hover{color:#fff;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.08);padding-top:22px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:.8rem;color:#6f96a1;
+  }
+  .footer-bottom a{color:#a9cdd6;font-weight:700;}
+
+  /* ===== CHAT WIDGET ===== */
+  .chat-launcher{
+    position:fixed;bottom:26px;right:26px;z-index:1400;
+    width:64px;height:64px;border-radius:50%;
+    background:var(--maroon);color:#fff;border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;font-size:1.6rem;
+    box-shadow:0 14px 30px -8px rgba(125,46,53,.6);
+    transition:transform .2s ease;
+  }
+  .chat-launcher:hover{transform:scale(1.06);}
+  .chat-launcher .dot{
+    position:absolute;top:4px;right:4px;width:13px;height:13px;border-radius:50%;
+    background:#3ddc84;border:2px solid #fff;
+  }
+  .chat-panel{
+    position:fixed;bottom:104px;right:26px;z-index:1400;
+    width:360px;max-width:calc(100vw - 40px);
+    background:#fff;border-radius:22px;box-shadow:0 30px 70px -20px rgba(4,20,25,.45);
+    overflow:hidden;display:none;flex-direction:column;
+    border:1px solid var(--line);
+    max-height:min(560px, 70vh);
+  }
+  .chat-panel.open{display:flex;}
+  .chat-head{
+    background:linear-gradient(120deg, var(--teal-dark), var(--teal-darker));
+    color:#fff;padding:18px 18px;display:flex;align-items:center;gap:12px;
+  }
+  .chat-head img{width:38px;height:38px;border-radius:18%;}
+  .chat-head .who{flex:1;}
+  .chat-head .who strong{display:block;font-size:.95rem;}
+  .chat-head .who span{display:block;font-size:.74rem;color:#bfe1e8;opacity:.9;}
+  .chat-head .who span::before{content:"● ";color:#3ddc84;}
+  .chat-close{
+    background:rgba(255,255,255,.12);border:none;color:#fff;width:30px;height:30px;border-radius:50%;
+    cursor:pointer;font-size:1rem;line-height:1;display:flex;align-items:center;justify-content:center;
+  }
+  .chat-close:hover{background:rgba(255,255,255,.22);}
+  .chat-body{
+    flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px;
+    background:#f5f8f7;
+  }
+  .msg{max-width:88%;padding:12px 14px;border-radius:16px;font-size:.87rem;line-height:1.55;}
+  .msg.bot{background:#fff;border:1px solid var(--line);color:var(--ink);border-bottom-left-radius:4px;align-self:flex-start;}
+  .msg.user{background:var(--teal-dark);color:#fff;border-bottom-right-radius:4px;align-self:flex-end;}
+  .msg a{color:var(--teal-dark);font-weight:800;text-decoration:underline;}
+  .msg.bot a{color:var(--teal-mid);}
+  .typing{display:flex;gap:4px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:16px;align-self:flex-start;border-bottom-left-radius:4px;}
+  .typing span{width:6px;height:6px;border-radius:50%;background:#a9cdd6;animation:bounce 1.2s infinite;}
+  .typing span:nth-child(2){animation-delay:.15s;}
+  .typing span:nth-child(3){animation-delay:.3s;}
+  @keyframes bounce{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+  .chat-input{display:flex;gap:8px;padding:14px;border-top:1px solid var(--line);background:#fff;}
+  .chat-input input{
+    flex:1;border:1.5px solid var(--line);border-radius:100px;padding:11px 16px;font-size:.87rem;
+    font-family:inherit;outline:none;
+  }
+  .chat-input input:focus{border-color:var(--teal-dark);}
+  .chat-input button{
+    background:var(--teal-dark);color:#fff;border:none;width:42px;height:42px;border-radius:50%;
+    cursor:pointer;font-size:1rem;flex-shrink:0;
+  }
+  .chat-input button:hover{background:var(--teal-darker);}
+  .chat-suggest{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 14px;background:#f5f8f7;}
+  .chat-suggest button{
+    background:#fff;border:1px solid var(--line);color:var(--teal-dark);font-size:.76rem;font-weight:700;
+    padding:8px 12px;border-radius:100px;cursor:pointer;
+  }
+  .chat-suggest button:hover{background:#eef6f8;}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 980px){
+    .nav-links, .nav-call{display:none;}
+    .nav-cta .btn-primary{display:none;}
+    .burger{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:2.05rem;}
+    .hero-visual{order:-1;}
+    .hero-card img{height:260px;}
+    .vet-grid, .vet-grid.reverse{grid-template-columns:1fr;text-align:center;}
+    .vet-grid.reverse .vet-photo{order:0;}
+    .vet-copy p{text-align:left;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .testi-grid{grid-template-columns:1fr;}
+    .proof-grid{grid-template-columns:1fr;gap:26px;}
+    .proof{padding:40px 26px;}
+    .hours-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;gap:28px;}
+    section{padding:64px 0;}
+    .final-cta{padding:50px 24px;}
+    .final-cta h2{font-size:1.6rem;}
+    .promo{flex-direction:column;text-align:center;}
+  }
+  @media (max-width: 560px){
+    .services-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .hero-trust{gap:14px;}
+    .chat-panel{right:16px;left:16px;width:auto;bottom:96px;}
+    .chat-launcher{right:18px;bottom:18px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="brand" href="#top">
+      <img src="/public/images/icon-square.png" alt="Westridge Animal Hospital logo">
+      <span class="brand-text">
+        <strong>Westridge Animal Hospital</strong>
+        <span>FORT WORTH, TX · SINCE 1984</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">Our Team</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Patients</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#visit">Hours &amp; Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a class="nav-call" href="tel:+18172447742">📞 (817) 244-7742</a>
+      <a class="btn btn-primary" href="tel:+18172447742">Call Now</a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">Our Team</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Patients</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#visit">Hours &amp; Contact</a>
+    <a class="btn btn-primary" href="tel:+18172447742">Call Now</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:64px;">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow on-dark">🐾 9911 Camp Bowie W., Fort Worth, TX</span>
+          <h1>The animal hospital Fort Worth families have trusted <em>since 1984</em>.</h1>
+          <p class="lead">Westridge Animal Hospital has cared for the same Fort Worth neighborhood for over 40 years. Dr. Christopher Brooks and his team treat every patient like family — with the quality care and friendly smile they've built their name on since day one.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+18172447742">📞 Call (817) 244-7742</a>
+            <a class="btn btn-outline" href="#visit">📍 Hours &amp; Location</a>
+          </div>
+          <div class="hero-trust">
+            <div class="item">
+              <span class="num">1984</span>
+              <span class="lbl">Established, same Fort Worth location</span>
+            </div>
+            <div class="item">
+              <span class="num">40+</span>
+              <span class="lbl">Years of faithful customers</span>
+            </div>
+            <div class="item">
+              <span class="num">🐾</span>
+              <span class="lbl">Multi-generational family care</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <img src="/public/images/hero-sign.jpg" alt="Westridge Animal Hospital sign, Fort Worth, Texas">
+          </div>
+          <div class="hero-badge">
+            <span class="icon">🩺</span>
+            <span>
+              <strong>Dr. Christopher Brooks, DVM</strong>
+              <span>Caring for Fort Worth pets since 1984</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="wrap">
+      <div class="t-item"><span class="dot">●</span> 9911 Camp Bowie W., Fort Worth, TX 76116</div>
+      <div class="t-item"><span class="dot">●</span> Mon–Sat, Appointments &amp; Surgery</div>
+      <div class="t-item"><span class="dot">●</span> Dr. Christopher Brooks, DVM — Texas A&amp;M '77</div>
+      <div class="t-item"><span class="dot">●</span> Family-owned since 1984</div>
+    </div>
+  </div>
+
+  <!-- MEET THE TEAM -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Our Mission</span>
+        <h2>Quality veterinary care, and a friendly smile</h2>
+        <p>Westridge Animal Hospital was established in 1984. Our mission is to continue providing the best quality veterinary care for our client base, which we consider our family. With over 40 years of faithful customers, we strive to maintain the health and well-being of your pet with quality service and a friendly smile.</p>
+      </div>
+
+      <div class="vet-grid">
+        <div class="vet-photo">
+          <img src="/public/images/dr-brooks.jpg" alt="Dr. Christopher Brooks, DVM, at Westridge Animal Hospital">
+        </div>
+        <div class="vet-copy">
+          <span class="vet-role">Founder &amp; Veterinarian</span>
+          <h3>Dr. Christopher Brooks, DVM</h3>
+          <p>Dr. Brooks graduated from Texas A&amp;M in 1977, opened the doors to Westridge Animal Hospital on March 10, 1984, and moved the clinic to its current Camp Bowie location in 1987. Nearly four decades later, he still enjoys running a small clinic that lets him build real, personal relationships with multi-generational Fort Worth families — treating the whole patient, never over-treating.</p>
+        </div>
+      </div>
+
+      <div class="vet-grid reverse">
+        <div class="vet-photo">
+          <img src="/public/images/ashley.jpg" alt="Ashley, Office Manager at Westridge Animal Hospital">
+        </div>
+        <div class="vet-copy">
+          <span class="vet-role">Office Manager</span>
+          <h3>Ashley</h3>
+          <p>Ashley has been part of the Westridge team since February 2007, assisting Dr. Brooks with patients and inventory while keeping the clinic stocked with the most current products available. She has a particular interest in pet nutrition and making sure every visit runs smoothly.</p>
+        </div>
+      </div>
+
+      <div class="team-photo">
+        <img src="/public/images/team.jpg" alt="The Westridge Animal Hospital team">
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF / GAP BAND -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="proof">
+        <div class="proof-grid">
+          <div>
+            <span class="quote-mark">"</span>
+            <h2>Over 40 years of faithful Fort Worth customers.</h2>
+            <p>Westridge has earned four decades of trust the old-fashioned way — real care, real relationships, one family and one pet at a time. That reputation deserves a website that matches it.</p>
+          </div>
+          <div class="proof-side">
+            <h4 style="color:#fff;font-size:.95rem;letter-spacing:.4px;text-transform:uppercase;margin-bottom:16px;">What's missing right now</h4>
+            <div class="gap-line"><span class="gap-ic">📞</span><span><strong style="color:#fff;">Appointments are phone-only.</strong> There's no way to request a visit online — anyone browsing after hours has to remember to call back.</span></div>
+            <div class="gap-line"><span class="gap-ic">🌐</span><span><strong style="color:#fff;">Still on a free Wix subdomain.</strong> wixsite.com/westridge-ah, not a real westridgeanimalhospital.com — and every page still carries Wix's own "Create yours today" banner.</span></div>
+            <div class="gap-line"><span class="gap-ic">💬</span><span><strong style="color:#fff;">No chatbot anywhere.</strong> This page shows what one could look like — try the assistant in the corner.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="background:#eef6f8;">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What We Offer</span>
+        <h2>Full-service veterinary care, in-house</h2>
+        <p>Surgery, vaccinations, lab work, and medications — the same real services Westridge has offered Fort Worth pets for over 40 years.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="ic">🔪</div>
+          <h4>Surgery</h4>
+          <ul>
+            <li>Spaying &amp; Neutering</li>
+            <li>Dental</li>
+            <li>Declawing</li>
+            <li>Biopsy / Growth Removal</li>
+            <li>Orthopedic Work</li>
+            <li>C-Section</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="ic">💉</div>
+          <h4>Vaccinations</h4>
+          <ul>
+            <li>Rabies</li>
+            <li>Canine Distemper/Parvo</li>
+            <li>Canine Influenza &amp; Bordetella</li>
+            <li>Canine Rattlesnake</li>
+            <li>Feline Distemper</li>
+            <li>Feline Leukemia</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="ic">🧪</div>
+          <h4>Laboratory Services</h4>
+          <ul>
+            <li>Canine Heartworm Testing</li>
+            <li>CBC / Chemistry Panel</li>
+            <li>Feline Leukemia Testing</li>
+            <li>Thyroid Panels</li>
+            <li>Glucose Curves</li>
+            <li>X-Rays</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="ic">💊</div>
+          <h4>Medications</h4>
+          <ul>
+            <li>Trifexis &amp; Comfortis</li>
+            <li>Iverhart Plus</li>
+            <li>Vectra</li>
+            <li>Rimadyl &amp; Novox</li>
+            <li>Sentinel</li>
+            <li>Phycox</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Our Patients</span>
+        <h2>Real Westridge patients, over the years</h2>
+        <p>A few of the pets Dr. Brooks and the team have cared for at 9911 Camp Bowie W.</p>
+      </div>
+      <div class="gallery-grid">
+        <figure><img src="/public/images/pet-bengal-cat.jpg" alt="Bengal cat patient at Westridge Animal Hospital"></figure>
+        <figure><img src="/public/images/pet-puppy.jpg" alt="Puppy patient at Westridge Animal Hospital"></figure>
+        <figure><img src="/public/images/pet-hound.jpg" alt="Hound dog patient at Westridge Animal Hospital"></figure>
+        <figure><img src="/public/images/pet-white-cat.jpg" alt="Cat patient at Westridge Animal Hospital"></figure>
+        <figure><img src="/public/images/pet-grey-dog.jpg" alt="Dog patient at Westridge Animal Hospital"></figure>
+        <figure><img src="/public/images/pet-dog-car.jpg" alt="Dog patient at Westridge Animal Hospital"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" style="background:#eef6f8;">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Testimonials</span>
+        <h2>What Westridge families say</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"Niko was a patient of Dr. Brooks from the time he was a baby in 1997 to his very last day in 2009. I could never say thanks enough for all the wonderful care he gave my baby."</p>
+          <div class="who">— Regina</div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"I have known Dr. Chris Brooks for twenty five years &amp; he has cared for all of my six dachshunds. He not only does his work well, his staff is great too. When you go to Dr. Brooks he takes his time to help you &amp; your loved one. The prices are reasonable too."</p>
+          <div class="who">— Coco</div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"Westridge Animal Hospital is absolutely the best! We would not trust our precious babies to anyone else except Dr. Brooks and his wonderful staff. Westridge has a proven history of high standards as well as true compassion for his patients."</p>
+          <div class="who">— Kandie</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO -->
+  <section>
+    <div class="wrap">
+      <div class="promo">
+        <div>
+          <h3>🐾 Bring in 3 or more pets, save 15%</h3>
+          <p>Westridge offers a 15% discount off the total bill when you bring in 3 or more pets for vaccinations in the same visit.</p>
+        </div>
+        <a class="btn" style="background:#fff;color:var(--maroon);" href="tel:+18172447742">Call to Schedule</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section id="visit">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Plan Your Visit</span>
+        <h2>Hours, location &amp; how to reach us</h2>
+        <p>Call ahead for an appointment — Westridge sees patients Monday through Saturday.</p>
+      </div>
+      <div class="hours-grid">
+        <div class="info-card">
+          <h3>Office Hours</h3>
+          <div class="hours-row"><span>Mon – Wed</span><span>8–11am, 2–6pm Appointments · 11am–2pm Surgery</span></div>
+          <div class="hours-row"><span>Thursday</span><span>8am – 12pm</span></div>
+          <div class="hours-row"><span>Friday</span><span>8–11am, 2–4pm Appointments · 11am–2pm Surgery</span></div>
+          <div class="hours-row"><span>Saturday</span><span>8am – 12pm, Appointments</span></div>
+          <div class="emergency-note">
+            📞 <span><strong>Appointments are by phone only today.</strong> Call (817) 244-7742 during office hours to schedule — or try the chat assistant in the corner to see what 24/7 online booking could look like.</span>
+          </div>
+        </div>
+        <div class="info-card" id="contact">
+          <h3>Get In Touch</h3>
+          <div class="contact-line"><span class="ic">📍</span><span>9911 Camp Bowie W.<br>Fort Worth, TX 76116</span></div>
+          <div class="contact-line"><span class="ic">📞</span><a href="tel:+18172447742">(817) 244-7742</a></div>
+          <div class="contact-line"><span class="ic">📠</span><span>Fax: (817) 244-9427</span></div>
+          <div class="contact-line"><span class="ic">✉️</span><a href="mailto:westridgeah@gmail.com">westridgeah@gmail.com</a></div>
+          <div class="contact-line"><span class="ic">📘</span><a href="https://www.facebook.com/westridgeah" target="_blank" rel="noopener">Find us on Facebook</a></div>
+          <a class="btn btn-ghost" style="margin-top:10px;width:100%;justify-content:center;" href="https://www.google.com/maps/search/?api=1&query=9911+Camp+Bowie+W+Fort+Worth+TX+76116" target="_blank" rel="noopener">Open in Google Maps →</a>
+        </div>
+      </div>
+      <div class="map-embed" style="margin-top:24px;">
+        <iframe src="https://www.google.com/maps?q=9911+Camp+Bowie+W+Fort+Worth+TX+76116&output=embed" allowfullscreen title="Map to Westridge Animal Hospital"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section>
+    <div class="wrap">
+      <div class="final-cta">
+        <h2>Try the assistant in the corner of this page 👋</h2>
+        <p>This is a live demo of an AI assistant that could sit on Westridge's own website — answering questions and booking appointments any time of day, even when the clinic is closed.</p>
+        <div class="hero-actions">
+          <a class="btn" style="background:#fff;color:var(--teal-darker);" href="https://solvendix.com/how-chatbot-works" target="_blank" rel="noopener">See how it works</a>
+          <a class="btn btn-outline" href="https://solvendix.com/book" target="_blank" rel="noopener">Book a Discovery Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="/public/images/icon-square.png" alt="Westridge Animal Hospital logo">
+          <strong>Westridge Animal Hospital</strong>
+        </div>
+        <p style="max-width:320px;font-size:.88rem;">Fort Worth's family animal hospital since 1984 — quality veterinary care and a friendly smile, for over 40 years.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">Our Team</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#visit">Hours &amp; Location</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+18172447742">(817) 244-7742</a></li>
+          <li><a href="mailto:westridgeah@gmail.com">westridgeah@gmail.com</a></li>
+          <li><a href="https://www.facebook.com/westridgeah" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Westridge Animal Hospital. Demo redesign by <a href="https://solvendix.com" target="_blank" rel="noopener">Solvendix</a>.</span>
+      <span>9911 Camp Bowie W., Fort Worth, TX 76116</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CHAT WIDGET -->
+<button class="chat-launcher" id="chatLauncher" aria-label="Open chat">
+  💬<span class="dot"></span>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <img src="/public/images/icon-square.png" alt="Clinic assistant avatar">
+    <div class="who">
+      <strong>Chat with us</strong>
+      <span>Online now</span>
+    </div>
+    <button class="chat-close" id="chatCloseBtn" aria-label="Close chat">×</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="msg bot">Hi! 👋 I'm the AI assistant for Westridge Animal Hospital. Ask me about hours, services, or booking a visit for your pet.</div>
+  </div>
+  <div class="chat-suggest" id="chatSuggest">
+    <button data-q="What are your hours?">What are your hours?</button>
+    <button data-q="Do you take walk-ins?">Do you take walk-ins?</button>
+    <button data-q="Can I book online?">Can I book online?</button>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Type a message…" autocomplete="off">
+    <button id="chatSendBtn" aria-label="Send message">➤</button>
+  </div>
+</div>
+
+<script>
+  // Mobile menu
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burgerBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+  }));
+
+  // Chat widget
+  const chatLauncher = document.getElementById('chatLauncher');
+  const chatPanel = document.getElementById('chatPanel');
+  const chatCloseBtn = document.getElementById('chatCloseBtn');
+  const chatBody = document.getElementById('chatBody');
+  const chatInput = document.getElementById('chatInput');
+  const chatSendBtn = document.getElementById('chatSendBtn');
+  const chatSuggest = document.getElementById('chatSuggest');
+
+  const REPLY = "This chatbot will be your website's 24/7 assistant — answering your customers' questions about your business and booking appointments instantly, so you never lose a customer to a missed message.<br><br>Businesses that add a 24/7 AI chatbot usually see more booked appointments and fewer lost leads — often a noticeable jump in monthly revenue, since it catches customers your site would otherwise lose. See how it works → <a href=\"https://solvendix.com/how-chatbot-works\" target=\"_blank\" rel=\"noopener\">solvendix.com/how-chatbot-works</a><br><br>Curious how this would work for your business? Book a free 15-minute discovery call with Solvendix and we'll help you implement everything you need: <a href=\"https://solvendix.com/book\" target=\"_blank\" rel=\"noopener\">solvendix.com/book</a>";
+
+  function openChat(){
+    chatPanel.classList.add('open');
+    chatInput.focus();
+  }
+  function closeChat(){
+    chatPanel.classList.remove('open');
+  }
+  chatLauncher.addEventListener('click', () => {
+    chatPanel.classList.contains('open') ? closeChat() : openChat();
+  });
+  chatCloseBtn.addEventListener('click', closeChat);
+
+  function addMsg(text, who){
+    const div = document.createElement('div');
+    div.className = 'msg ' + who;
+    div.innerHTML = text;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function sendReply(){
+    const typing = document.createElement('div');
+    typing.className = 'typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    chatBody.appendChild(typing);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    setTimeout(() => {
+      typing.remove();
+      addMsg(REPLY, 'bot');
+    }, 900);
+  }
+
+  function handleSend(text){
+    if(!text.trim()) return;
+    addMsg(text.replace(/</g,'&lt;'), 'user');
+    chatInput.value = '';
+    chatSuggest.style.display = 'none';
+    sendReply();
+  }
+
+  chatSendBtn.addEventListener('click', () => handleSend(chatInput.value));
+  chatInput.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') handleSend(chatInput.value);
+  });
+  chatSuggest.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => handleSend(btn.dataset.q));
+  });
+</script>
+
+</body>
+</html>
