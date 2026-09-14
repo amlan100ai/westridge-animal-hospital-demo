@@ -34,10 +34,14 @@
     margin:0;
     font-family:'Inter', sans-serif;
     color:var(--ink);
-    background:var(--teal-darker);
+    background:var(--cream);
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
+  /* Pull the hero's dark background up underneath the sticky header, so the header's
+     glass blur always reads against the hero gradient (never the light page background)
+     at scroll-top — fixes nav-vs-hero luminance without darkening every other section. */
+  main{margin-top:-80px;}
   h1,h2,h3,h4{
     font-family:'Fraunces', serif;
     margin:0 0 .5em 0;
@@ -413,7 +417,7 @@
 <main id="top">
 
   <!-- HERO -->
-  <section class="hero" style="padding-top:64px;">
+  <section class="hero" style="padding-top:144px;">
     <div class="wrap">
       <div class="hero-grid">
         <div>
